@@ -18,24 +18,24 @@ dependencies {
     implementation(group = "com.sangupta", name = "murmur", version = "1.0.0")
 }
 
-sourceSets {
-    getByName("main") {
-        java.srcDir("build/gen/buildconfig/src/main")
-    }
-}
+//sourceSets {
+//    getByName("main") {
+//        java.srcDir("build/gen/buildconfig/src/main")
+//    }
+//}
 
-val sourcesJar by tasks.registering(Jar::class) {
-    archiveClassifier.set("sources")
-    from(sourceSets.main.get().allSource)
-}
+//val sourcesJar by tasks.registering(Jar::class) {
+//    archiveClassifier.set("sources")
+//    from(sourceSets.main.get().allSource)
+//}
 
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            from(components["java"])
-            artifact(sourcesJar.get()) {
-                builtBy(sourcesJar)
-            }
+//            from(components["java"])
+//            artifact(sourcesJar.get()) {
+//                builtBy(sourcesJar)
+//            }
         }
     }
 

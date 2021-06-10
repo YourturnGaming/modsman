@@ -20,6 +20,12 @@ class Modsman(
     numConcurrent: Int
 ) : Closeable {
 
+    companion object {
+        fun getVersion(): String? {
+            return Modsman::class.java.getPackage().getImplementationVersion()
+        }
+    }
+
     val modlist = ModlistManager.load(modsPath)
     private val curseforgeClient = CurseforgeService.createClient()
     private val downloadPool = Executors.newFixedThreadPool(numConcurrent)

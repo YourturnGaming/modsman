@@ -8,7 +8,6 @@ import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import modsman.BuildConfig
 import modsman.Modsman
 import java.nio.file.Files
 import java.nio.file.Paths
@@ -42,7 +41,7 @@ fun main(args: Array<String>) {
     }
 
     if (Args.version) {
-        JCommander.getConsole().println(BuildConfig.VERSION)
+        JCommander.getConsole().println(Modsman.getVersion())
         exitProcess(0)
     }
 

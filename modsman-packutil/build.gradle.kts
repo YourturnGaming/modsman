@@ -1,16 +1,16 @@
 plugins {
     kotlin("jvm")
     application
-    id("com.github.johnrengelman.shadow") version "5.2.0"
+    id("com.github.johnrengelman.shadow") version "7.0.0"
 }
 
 dependencies {
     implementation(project(":modsman-core"))
-    implementation(group = "com.beust", name = "jcommander", version = "1.71")
+    implementation(group = "com.beust", name = "jcommander", version = "1.72")
 }
 
 application {
-    mainClassName = "modsman.packutil.MainKt"
+    mainClass.set("modsman.packutil.MainKt")
 }
 
 tasks {

@@ -47,7 +47,7 @@ internal object RootCommand : CommandBase() {
 
     override suspend fun run(jc: JCommander): Int {
         return if (version) {
-            JCommander.getConsole().println(BuildConfig.VERSION)
+            JCommander.getConsole().println(Modsman.getVersion())
             0
         } else {
             jc.usage()

@@ -12,7 +12,7 @@ val gitVersion: groovy.lang.Closure<Any> by extra
 
 allprojects {
     repositories {
-        jcenter()
+        mavenCentral()
     }
 
     tasks.withType<KotlinCompile> {

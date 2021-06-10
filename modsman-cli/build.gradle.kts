@@ -5,9 +5,9 @@ plugins {
 
 dependencies {
     implementation(project(":modsman-core"))
-    implementation(group = "com.beust", name = "jcommander", version = "1.71")
+    implementation(group = "com.beust", name = "jcommander", version = "1.72")
 }
 
 application {
-    mainClassName = "modsman.cli.MainKt"
+    mainClass.set("modsman.cli.MainKt")
 }

@@ -36,12 +36,12 @@ fun main(args: Array<String>) {
     try {
         jc.parse(*args)
     } catch (e: ParameterException) {
-        JCommander.getConsole().println(e.message)
+        jc.console.println(e.message)
         exitProcess(1)
     }
 
     if (Args.version) {
-        JCommander.getConsole().println(Modsman.getVersion())
+        jc.console.println(Modsman.getVersion())
         exitProcess(0)
     }
 

@@ -5,7 +5,7 @@ plugins {
 
 dependencies {
     implementation(project(":modsman-core"))
-    implementation(group = "com.beust", name = "jcommander", version = "1.72")
+    implementation(group = "com.beust", name = "jcommander", version = "1.81")
 }
 
 application {

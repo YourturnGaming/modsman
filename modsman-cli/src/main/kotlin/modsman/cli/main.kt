@@ -47,7 +47,7 @@ internal object RootCommand : CommandBase() {
 
     override suspend fun run(jc: JCommander): Int {
         return if (version) {
-            JCommander.getConsole().println(Modsman.getVersion())
+            jc.console.println(Modsman.getVersion())
             0
         } else {
             jc.usage()
@@ -59,8 +59,9 @@ internal object RootCommand : CommandBase() {
         try {
             return Modsman(Paths.get(modsFolder), maxConcurrent)
         } catch (e: NoSuchFileException) {
-            JCommander.getConsole().println("Couldn't find file: ${e.message}")
-            JCommander.getConsole().println("Did you forget to run `modsman init`?")
+            // TODO does it really matter if we don't use jc.console.println here?
+            println("Couldn't find file: ${e.message}")
+            println("Did you forget to run `modsman init`?")
             exitProcess(1)
         }
     }
@@ -101,7 +102,7 @@ internal object InitCommand : CommandBase() {
             ).close()
             return 0
         } catch (e: FileAlreadyExistsException) {
-            JCommander.getConsole().println("Already initialized; delete .modlist.json to re-init")
+            jc.console.println("Already initialized; delete .modlist.json to re-init")
             return 1
         }
     }
@@ -272,13 +273,13 @@ fun main(args: Array<String>) {
         jc.parse(*args)
     } catch (e: ParameterException) {
         if (!RootCommand.help) {
-            JCommander.getConsole().println(e.message)
+            jc.console.println(e.message)
             exitProcess(1)
         }
     }
 
     if (RootCommand.help) {
-        jc.parsedCommand?.let { jc.usage(it) } ?: jc.usage()
+        jc.parsedCommand?.let { jc.usageFormatter.usage(it) } ?: jc.usage()
         exitProcess(0)
     }
 

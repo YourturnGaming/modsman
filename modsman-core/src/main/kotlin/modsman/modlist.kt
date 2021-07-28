@@ -40,7 +40,7 @@ data class Modlist(
 class ModlistManager(val modsPath: Path, modlist: Modlist) : Closeable {
 
     val config = modlist.config
-    private val modMap = modlist.mods.map { it.projectId to it }.toMap().toMutableMap()
+    private val modMap = modlist.mods.map { it.projectId to it }.toMap().toMutableMap().toSortedMap()
 
     val mods get() = (modMap as Map<Int, ModEntry>).values
 

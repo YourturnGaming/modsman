@@ -25,7 +25,7 @@ internal interface CurseforgeService {
 
     companion object {
         fun createClient(): CurseforgeService = Retrofit.Builder()
-            .baseUrl("https://api.curseforge.com")
+            .baseUrl("https://minecraft.curseforge.com/api/maven/")
             .addConverterFactory(
                 GsonConverterFactory.create())
             .addCallAdapterFactory(
